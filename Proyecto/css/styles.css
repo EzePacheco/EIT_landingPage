@@ -18,8 +18,10 @@
   /* Colors */
   --c_white: #fff;
   --c_black: #000;
+  --c_yellow500: #ffff00;
 
   --c_cyan500: #58befe;
+  --c_grey500: #575757;
 
   --c_green400: #90d4c5;
   --c_green700: #2b7262;
@@ -54,6 +56,8 @@ button {
   all: unset;
 }
 
+/* TODO Add: Grid */
+
 .Body {
   font-size: clamp(100%, 1rem + 0.75vw, 25px);
   line-height: var(--f_lineHeight);
@@ -62,6 +66,7 @@ button {
 }
 
 /* --- Comienzo Header --- */
+/* TODO Container Query */
 .Header {
   height: var(--l_headerHeight);
   color: var(--c_white);
@@ -71,6 +76,7 @@ button {
   background-position: center;
 
   & .navbar {
+    padding-inline: 1rem;
     height: var(--l_navbarHeight);
 
     display: flex;
@@ -103,26 +109,28 @@ button {
     flex-direction: row;
 
     & .article {
-      & .container {
-        display: flex;
-        flex-direction: row;
-      }
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      padding-inline: 4rem;
+      gap: 2rem;
+      justify-content: center;
 
       & .picture {
-        & .picture__img {
-          /* Estilos específicos de la imagen de la sección */
-        }
+        width: 50%;
       }
-
-      & .gallery {
-        display: flex;
-        flex-direction: row;
-      }
+    }
+  }
+  & .gallery {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .gallery__img {
     }
   }
 
   & .section:nth-child(3) {
-    height: 500px;
+    height: 600px;
     display: flex;
     flex-direction: row;
     align-items: stretch;
@@ -136,6 +144,8 @@ button {
       align-items: center;
       justify-content: end;
       text-align: center;
+
+      color: var(--c_black);
     }
 
     & .article:first-child {
@@ -150,6 +160,20 @@ button {
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
+    }
+  }
+
+  & .section:nth-child(4) .article {
+    height: 700px;
+    width: 100%;
+
+    & .container {
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      flex-direction: row;
+
+      gap: 2rem;
     }
   }
 
@@ -206,11 +230,17 @@ button {
 .title--H4 {
   font-size: 1.75rem;
   text-align: center;
+  color: var(--c_grey500);
 }
 .paragraph {
   max-width: 42ch;
 }
 .link {
+  font-weight: calc(var(--f_fontWeight) + 300);
+  text-decoration: none;
+
+  text-shadow: 3px 3px var(--c_yellow500);
+  color: var(--c_black);
 }
 
 /* --- Logo --- */
@@ -252,6 +282,13 @@ button {
 
 /* --- Cards --- */
 .card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 2rem;
+
   & .card__figure {
     & .card__figure--img {
       /* Estilos específicos de la imagen de la tarjeta */
@@ -262,15 +299,26 @@ button {
   & .card__description {
     /* Estilos para la descripción de la tarjeta */
     max-width: 42ch;
+    padding-inline: 1rem;
   }
 
   & .card__person {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    text-align: center;
+
     & .card__person--name {
       /* Estilos para el nombre de la persona */
+      font-weight: calc(var(--f_fontWeight) + 200);
     }
 
     & .card__person--job {
       /* Estilos para el cargo de la persona */
+      font-style: italic;
     }
   }
 }
+
+/* ___ MEDIAQUERIES ___*/
